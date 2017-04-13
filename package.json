@@ -1,0 +1,11 @@
+{
+  "name": "a-vulgar-language-generator",
+  "version": "1.0.0",
+  "description": "A generative language tool, that parses pages on wiktionary and reforms new words from existing ones.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
