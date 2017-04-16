@@ -1,15 +1,28 @@
 {
   "name": "a-vulgar-language-generator",
   "version": "1.0.0",
-  "description": "A generative language tool, that parses pages on wiktionary and reforms new words from existing ones.",
-  "main": "index.js",
+  "description": "A generative language tool.",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "watchify app.js -o public/js/bundle.js -v",
+    "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
+    "build": "npm run browserify",
+    "start": "npm run watch & nodemon server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Austin Slominski",
+  "license": "MIT",
   "dependencies": {
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
     "fs": "0.0.1-security",
-    "xml2js": "^0.4.17"
-  }
+    "mongodb": "^2.2.25",
+    "mongoose": "^4.9.4",
+    "node-jsx": "^0.13.3",
+    "react": "^15.5.4"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  }  
 }
