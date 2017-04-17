@@ -1,28 +1,36 @@
 {
-  "name": "a-vulgar-language-generator",
+  "name": "avl",
   "version": "1.0.0",
-  "description": "A generative language tool.",
-  "main": "app.js",
+  "description": "Generative language tools, as well as an interactive viewer.",
+  "main": "index.js",
   "scripts": {
-    "watch": "watchify app.js -o public/js/bundle.js -v",
-    "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
-    "build": "npm run browserify",
-    "start": "npm run watch & nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "author": "Austin Slominski",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aceslowman/node-avl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aceslowman/node-avl/issues"
+  },
+  "homepage": "https://github.com/aceslowman/node-avl#readme",
   "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "express-handlebars": "^3.0.0",
-    "fs": "0.0.1-security",
     "mongodb": "^2.2.25",
-    "mongoose": "^4.9.4",
+    "mongoose": "^4.9.5",
     "node-jsx": "^0.13.3",
-    "react": "^15.5.4"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
-  }  
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "^4.1.1",
+    "webpack": "^2.4.1"
+  }
 }

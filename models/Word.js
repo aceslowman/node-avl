@@ -1,8 +1,6 @@
 const fs = require('fs'),
     mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost/avl');
-
 // Create a new schema for our tweet data
 var schema = mongoose.Schema({
   word: String,
@@ -24,7 +22,7 @@ schema.statics.populate = function(callback){
 
     Word.remove({}, function (err) {
       if (err) return handleError(err);
-      console.log("removed");
+      // console.log("removed");
     });
 
     fs.readFile('assets/english_graphemes.json', 'utf8', function (err, data) {
@@ -60,7 +58,6 @@ schema.statics.populate = function(callback){
         // console.log(JSON.stringify(word,undefined,2));
         var word = new Word(word_obj);
         var promise = new Promise(function(resolve, reject) {
-          console.log(word);
           word.save(function (err, word) {
             if (err){
               reject(Error("Save error: " + err));
@@ -70,35 +67,27 @@ schema.statics.populate = function(callback){
           });
         });
         promise.then(function(result) {
-          console.log(result);
+          schema.statics.getWords();
         }, function(err) {
           console.log(err);
         });
       });
-
-      Word.find({},function(err,word){
-        if(err){
-          console.log(err);
-        }else{
-          console.log(word);
-        }
-      });
     });
 }
 
-// schema.statics.getWords = function(callback){
-//   var words[];
-//
-//   Word.find({}).exec(function(err,docs){
-//     if(!err){
-//       words = docs;
-//     }else{
-//       console.log(err);
-//     }
-//   });
-//
-//   callback(words);
-// }
+schema.statics.getWords = function(callback){
+  var words = [];
+
+  Word.find({},function(err,docs){
+    if(!err){
+      words = docs;
+      // console.log(words);
+      callback(words);
+    }else{
+      console.log(err);
+    }
+  });
+}
 
 // Return a Tweet model based upon the defined schema
 module.exports = Word = mongoose.model('Word', schema);
